@@ -1,76 +1,193 @@
 <!DOCTYPE html>
 <html lang="fr">
+<link rel="stylesheet" href="style.css">
 <head>
-    <meta charset="UTF-8">
-    <title>Portfolio - Thomas</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Thomas | Portfolio</title>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 
 <body>
 
-<header>
-    <h1>Thomas</h1>
-    <p>Étudiant en Informatique | Développeur de bots Discord</p>
-</header>
+<div id="particles-js"></div>
+
+<!-- INTRO -->
+
+<div id="intro">
+
+<h1>Thomas</h1>
+<p>Développeur | Bots Discord | Étudiant Informatique</p>
+
+<button id="enter">Entrer dans le portfolio</button>
+
+</div>
+
+<!-- SITE -->
 
 <nav>
-    <a href="#about">À propos</a>
-    <a href="#projects">Projets</a>
-    <a href="#skills">Compétences</a>
-    <a href="#contact">Contact</a>
+<a href="#hero">Accueil</a>
+<a href="#projects">Projets</a>
+<a href="#skills">Compétences</a>
+<a href="#contact">Contact</a>
 </nav>
 
-<section id="about">
-    <h2>À propos de moi</h2>
-    <p>
-        Je suis étudiant en informatique et développeur passionné par la création
-        de bots Discord et d'outils automatisés. J'aime concevoir des systèmes
-        efficaces et améliorer l'expérience des communautés en ligne.
-    </p>
+<section id="hero">
+
+<h2 id="typing"></h2>
+<p id="typing2"></p>
+
 </section>
 
 <section id="projects">
-    <h2>Mes projets</h2>
 
-    <div class="project">
-        <h3>Bot Discord Ticket</h3>
-        <p>Système de tickets complet avec gestion du staff.</p>
-    </div>
+<h2>Mes projets</h2>
 
-    <div class="project">
-        <h3>Bot Logs</h3>
-        <p>Bot permettant de suivre toutes les actions d'un serveur Discord.</p>
-    </div>
+<div class="projects">
 
-    <div class="project">
-        <h3>Bot Musique</h3>
-        <p>Bot permettant de gérer la musique sur un serveur.</p>
-    </div>
+<div class="card" onclick="toggleCard(this)">
+<h3>Bot Ticket</h3>
+<p class="short">
+Système complet de support avec gestion staff.
+</p>
+
+<p class="more">
+Ce bot permet de créer un système de tickets automatisé sur Discord.
+Les utilisateurs peuvent ouvrir un ticket, le staff peut répondre,
+et toutes les conversations sont archivées automatiquement.
+</p>
+
+</div>
+
+<div class="card">
+<h3>Bot Logs</h3>
+<p>Bot de modération avec logs détaillés.</p>
+</div>
+
+<div class="card">
+<h3>Bot Musique</h3>
+<p>Lecture de musique sur serveur Discord.</p>
+</div>
+
+</div>
 
 </section>
 
 <section id="skills">
-    <h2>Compétences</h2>
 
-    <ul>
-        <li>Python</li>
-        <li>Discord.py</li>
-        <li>HTML / CSS</li>
-        <li>JavaScript / TypeScript</li>
-        <li>Git</li>
-    </ul>
+<h2>Compétences</h2>
+
+<div class="skill">
+Python
+<div class="bar"><div class="progress" style="width:90%"></div></div>
+</div>
+
+<div class="skill">
+Discord.py
+<div class="bar"><div class="progress" style="width:85%"></div></div>
+</div>
+
+<div class="skill">
+HTML / CSS
+<div class="bar"><div class="progress" style="width:70%"></div></div>
+</div>
+
+<div class="skill">
+JavaScript
+<div class="bar"><div class="progress" style="width:60%"></div></div>
+</div>
 
 </section>
 
 <section id="contact">
-    <h2>Contact</h2>
-    <p>Discord : Tsukiyomi</p>
-    <p>Email : tsukiyomicode@gmail.com</p>
+
+<h2>Contact</h2>
+
+<p>Tu peux me contacter ici :</p>
+
+<div class="contact-buttons">
+
+<a class="btn" href="https://github.com/">GitHub</a>
+
+<a class="btn" href="#">Discord</a>
+
+</div>
+
 </section>
 
 <footer>
-    <p>© 2026 Thomas - Portfolio</p>
+© 2026 Thomas
 </footer>
+
+<script id="zq5b1m">
+
+/* INTRO */
+
+const btn = document.getElementById("enter")
+const intro = document.getElementById("intro")
+
+btn.onclick = () => {
+
+intro.style.opacity="0"
+
+setTimeout(()=>{
+intro.style.display="none"
+document.body.style.overflow="auto"
+},1000)
+
+}
+
+/* PARTICLES */
+
+particlesJS("particles-js",{
+particles:{
+number:{value:80},
+size:{value:3},
+color:{value:"#5865F2"},
+line_linked:{
+enable:true,
+distance:150,
+color:"#5865F2"
+}
+}
+})
+
+/* TYPING EFFECT */
+
+const text1 = "Salut 👋"
+const text2 = "Bienvenue sur mon site portefolio ! Je suis Thomas, étudiant en informatique et développeur passionné. je fais principalement des bots pour Discord, mais j'aime aussi explorer d'autres domaines de la programmation. Sur ce site, tu trouveras mes projets, mes compétences et comment me contacter. N'hésite pas à jeter un œil et à me contacter si tu as des questions ou des opportunités de collaboration !"
+
+let i = 0
+let j = 0
+
+function typeTitle(){
+
+if(i < text1.length){
+document.getElementById("typing").innerHTML += text1.charAt(i)
+i++
+setTimeout(typeTitle,80)
+}else{
+setTimeout(typeDesc,300)
+}
+}
+
+function typeDesc(){
+
+if(j < text2.length){
+document.getElementById("typing2").innerHTML += text2.charAt(j)
+j++
+setTimeout(typeDesc,4)
+}else{
+setTimeout(typeDesc2,300)
+}
+}
+
+typeTitle()
+
+function toggleCard(card){
+card.classList.toggle("active")
+}
+</script>
 
 </body>
 </html>
+```
